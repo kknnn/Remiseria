@@ -35,7 +35,7 @@ public class Loggin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String usu=request.getParameter("txtNombreUsuario");
-		String clave=request.getParameter("txtContraseña");
+		String clave=request.getParameter("txtContraseÃ±a");
 		UsuarioLogic ul=new UsuarioLogic();
 		Usuario user=ul.GetOne(usu, clave);
 		if(user==null){

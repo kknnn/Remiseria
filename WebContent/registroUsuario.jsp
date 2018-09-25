@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
   		<h2>Registro</h2>
-  		<form name="registro" class="form-horizontal" action="RegistroUsuario" method="post">
+  		<form name="registro" class="form-horizontal" onsubmit="return validaContraseñas()" action="RegistroUsuario" method="post">
     		<div class="form-group">
       			<label class="control-label col-sm-2">Nombre:</label>
       			<div class="col-sm-10">
@@ -70,8 +70,10 @@
       			</div>
       		</div>
   		</form>
+  		<p style="color: red" id="contraseñas"></p>
 	</div>
-	<h4>
+	
+	<h4 style="color:red">
 			<%
 			if(request.getParameter("mensaje") != null){
 				out.println(request.getParameter("mensaje"));
@@ -79,6 +81,19 @@
 			%>			
 	</h4>
 
+<script type="text/javascript">
+	function validaContraseñas(){
+		var c1=document.forms["registro"]["txtContraseña"].value;
+		var c2=document.forms["registro"]["txtContraseña2"].value;
+		if(!(c1===c2)){
+			var x = document.getElementById("contraseñas");
+			x.innerHTML="Las contraseñas no coinciden";
+			document.forms["registro"]["txtContraseña"].value="";
+			document.forms["registro"]["txtContraseña2"].value="";
+			return false;
+		}
+	}
+</script>
 
 </body>
 </html>
